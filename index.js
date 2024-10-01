@@ -3,7 +3,7 @@ import { User } from './src/models/User.js'
 import { connectDB } from './src/utils/get-db-connection/getDBConnection.js'
 import { auth } from './src/middlewares/auth.js'
 export const app = express()
-var cors = require('cors')
+import cors from 'cors'
 app.use(cors({ origin: "*" }))
 
 const port = 5000
