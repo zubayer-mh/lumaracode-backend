@@ -14,10 +14,13 @@ const port = 5000
 
 import signupRoute from "./src/routes/signupRoutes.js"
 import emailVerificationRoute from "./src/routes/emailVerificationRoute.js"
+import loginRoute from "./src/routes/loginRoute.js"
+import OAuthLoginRoute from "./src/routes/OAuthLoginRoute.js"
 
 app.use("/sign-up", signupRoute)
 app.use("/email-verification", emailVerificationRoute)
-
+app.use("/login", loginRoute)
+app.use("/oauth-login", OAuthLoginRoute)
 
 app.get('/', auth, async (req, res) => {
   res.send('Hello World!')
