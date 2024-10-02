@@ -6,11 +6,17 @@ export const app = express()
 import cors from 'cors'
 app.use(cors({ origin: "*" }))
 
+import bodyParser from 'body-parser'
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 const port = 5000
 
-import signupRoute from "./src/routes/userRoutes.js"
+import signupRoute from "./src/routes/signupRoutes.js"
+import emailVerificationRoute from "./src/routes/emailVerificationRoute.js"
 
 app.use("/sign-up", signupRoute)
+app.use("/email-verification", emailVerificationRoute)
 
 
 app.get('/', auth, async (req, res) => {
@@ -19,5 +25,5 @@ app.get('/', auth, async (req, res) => {
 
 app.listen(port, async () => {
   await connectDB()
-  console.log(`Example app listening on port ${port}`)
+  console.log(`listening on port ${port}`)
 })
